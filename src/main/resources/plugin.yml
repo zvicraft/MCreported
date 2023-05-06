@@ -1,0 +1,13 @@
+name: MCreported
+version: '${project.version}'
+main: ml.zvicraft.dev.mcreported.MCreported
+api-version: 1.19
+description: reports systems
+commands:
+ report:
+   description: open gui reports
+   usage: /<command>
+
+ reloadrmc:
+    description: reload configs
+    usage: /<command>

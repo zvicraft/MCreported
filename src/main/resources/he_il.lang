@@ -1,0 +1,53 @@
+no-permission= "&cסליחה, אבל אין לך גישה לפקודה הזאת."
+no-player ="&cOnly a player can do that command."
+no-target ="&cאתה צריך שחקן כדי לעשות את הפקודה הזאת."
+no-need-args ="&7אתה לא צריך ארגיומנט יותר גדול מזה בפקודה שלך."
+not-alive ="&cהשחקן הזה לא קיים או לא בשרת."
+reload ="&aהפלאגין התעדכן בהצלחה."
+same-player ="&cאתה לא יכול לעשות את זה לעצמך!"
+# Flight
+fly-enabled ="&aתעופה אושרה."
+fly-disabled ="&cתעופה בוטלה."
+fly-disabled-for ="&7תעופה בוטלה בשביל &c%target%"
+fly-enabled-for ="&7תעופה אושרה בשביל &a%target%"
+# Heal
+heal-message ="&aקיבלת חיים!"
+heal-player ="&cנתת ל %target% חיים נוספים."
+# Ping
+ping ="&bהפינג שלך הוא &e%ping%"
+ping-for ="&b%target% יש לו &e%ping%"
+# Ip
+#CMD
+REPORT-CMD = "&aתשתמש: /report <שחקן> <סיבה>"
+
+ip ="&bהאייפי שלך הוא &e%ip%"
+ip-for ="&b%target% האייפי שלו הוא &e%ip%"
+# GameModes
+already-gamemode ="&cאתה כבר במצב &e%gamemode%"
+gamemode-message ="&cאתה עכשיו מצב &e%gamemode%"
+gamemode-for ="&cשמת לו מצב %gamemode%"
+already-gamemode-for ="&cהוא כבר במצב &e%gamemode%"
+# Alert
+alert-prefix ="&c&lALERT"
+alert-msg ="%prefix%&8 =&f%msg%"
+# Spawn
+set-spawn ="&aהספאון נשמר!"
+spawn-tp ="&aהשתגרת לספאון!"
+no-spawn ="&cאין ספאון מוכן."
+spawn-tp-for ="&aשיגרת את &2%target%&a לספאון."
+# Message
+msg-toggle-on ="&aאישרת כרגע הודעות פרטיות."
+msg-toggle-off ="&cביטלת כרגע הודעות פרטיות."
+target-msg ="&b%player% &8-> &e%target%&8: &f%msg%"
+player-msg ="&b%player% &8-> &e%target%&8: &f%msg%"
+player-msg-see ="&c(&b%player% &8-> &e%target%&c)&8: &f%msg%"
+# Glow
+glow-enabled ="&aמצב זוהר מופעל!"
+glow-disabled ="&cמצב זוהר בוטל!"
+glow-by-someone-enabled ="&aהפעלת ל %player%&a מצב זוהר!"
+glow-by-someone-disabled ="&cבטילת לשחקן %player% &cמצב זוהר!"
+#ERROR
+MUST-BE-PLAYER-ERROR ="&cOnly a player can execute this command!"
+
+COLDMSGGE ="&cאתה כותב מהר מדי!"
+ReportCMD-msg=  ""תשתמש: /report <שחקן> <סיבה>""

@@ -1,0 +1,35 @@
+config: 1.0
+## created by zvicraft
+# Moderation
+language-file: "en_us" # The name of the language file to use
+#general
+prefix: "&6&lMCREPORTED &7| "
+none-permission: "&cSorry, but you don't have access to this command."
+none-player: "&cOnly a player can do that command."
+none-target: "&cYou need a player to do this command."
+none-need-args: "&7You don't need a bigger argument than that in your command."
+none-alive: "&cThis player does not exist or is not on the server."
+reload: "&aThe plugin has been updated successfully."
+player-same: "&cYou can't do this to yourself!"
+
+#error
+MUST-BE-PLAYER-ERROR: "&cOnly a player can execute this command!"
+
+
+#discord
+WEBHOOK_URL: ""#url
+GUI-icon: ""#url
+ReportCMD: "/"
+
+
+
+
+
+
+
+
+
+
+
+
+
