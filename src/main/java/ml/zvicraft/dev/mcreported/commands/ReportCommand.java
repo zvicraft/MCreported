@@ -1,5 +1,6 @@
 package ml.zvicraft.dev.mcreported.commands;
 
+import ml.zvicraft.dev.mcreported.MCreported;
 import ml.zvicraft.dev.mcreported.completion.DiscordWebhook;
 import ml.zvicraft.dev.mcreported.utils.Utils;
 import org.bukkit.Bukkit;
@@ -24,9 +25,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static ml.zvicraft.dev.mcreported.MCreported.plugin;
 
 public class ReportCommand implements CommandExecutor {
+    private MCreported plugin = MCreported.getInstance();
 
 //    String WEBHOOK_URL = plugin.getConfig().getString("WEBHOOK_URL_C");
 //    DiscordWebhook webhook = new DiscordWebhook(WEBHOOK_URL);
