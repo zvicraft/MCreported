@@ -1,6 +1,7 @@
 package ml.zvicraft.dev.mcreported.GUI;
 
 
+import com.cryptomorin.xseries.XMaterial;
 import ml.zvicraft.dev.mcreported.PlayerAPI.ChatBoolen;
 import ml.zvicraft.dev.mcreported.utils.Utils;
 import org.bukkit.Bukkit;
@@ -9,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,20 +47,31 @@ public class Default {
     public static Inventory ReportType(){
         Inventory toReturn = Bukkit.createInventory(null,5*9,reportTypeIN);
         for (int i = 0; i <= 9; i++) {
-            material(Material.RED_STAINED_GLASS_PANE,toReturn,1,i,chat("&e"));
+            ItemStack matiloop2 = material(Material.RED_STAINED_GLASS_PANE, toReturn, 1, i, chat("&e"));
+            XMaterial.matchXMaterial(matiloop2);
+
         }
-        material(Material.RED_STAINED_GLASS_PANE,toReturn,1,17,chat("&e"));
-        material(Material.RED_STAINED_GLASS_PANE,toReturn,1,18,chat("&e"));
-        material(Material.RED_STAINED_GLASS_PANE,toReturn,1,26,chat("&e"));
-        material(Material.RED_STAINED_GLASS_PANE,toReturn,1,27,chat("&e"));
+
+        ItemStack mati17 = material(Material.RED_STAINED_GLASS_PANE, toReturn, 1, 17, chat("&e"));
+        ItemStack mati18 = material(Material.RED_STAINED_GLASS_PANE, toReturn, 1, 18, chat("&e"));
+        ItemStack mati26 = material(Material.RED_STAINED_GLASS_PANE, toReturn, 1, 26, chat("&e"));
+        ItemStack mati27 = material(Material.RED_STAINED_GLASS_PANE, toReturn, 1, 27, chat("&e"));
         for (int i = 35; i <= 44; i++) {
-            material(Material.RED_STAINED_GLASS_PANE,toReturn,1,i,chat("&e"));
+            ItemStack matilop = material(Material.RED_STAINED_GLASS_PANE, toReturn, 1, i, chat("&e"));
+            XMaterial.matchXMaterial(matilop);
         }
-        material(Material.PLAYER_HEAD, toReturn, 1,20, reportTypeINV);
-        material(Material.BARRIER, toReturn, 1,40,Utils.chat(plugin.getConfig().getString("Report-Close")));
-        material(Material.RED_SHULKER_BOX, toReturn, 1,24,Utils.chat(plugin.getConfig().getString("Report-Bugs")));
+        ItemStack mati20 = material(Material.PLAYER_HEAD, toReturn, 1, 20, reportTypeINV);
+        ItemStack mati40 = material(Material.BARRIER, toReturn, 1, 40, Utils.chat(plugin.getConfig().getString("Report-Close")));
+        ItemStack mati24 = material(Material.RED_SHULKER_BOX, toReturn, 1, 24, Utils.chat(plugin.getConfig().getString("Report-Bugs")));
 
 
+        XMaterial.matchXMaterial(mati17);
+        XMaterial.matchXMaterial(mati18);
+        XMaterial.matchXMaterial(mati26);
+        XMaterial.matchXMaterial(mati27);
+        XMaterial.matchXMaterial(mati20);
+        XMaterial.matchXMaterial(mati40);
+        XMaterial.matchXMaterial(mati24);
 
 
         return toReturn;
@@ -81,10 +92,9 @@ public class Default {
             i.setItemMeta(im);
             inv.setItem(t,i);
             itemName = im.getDisplayName();
-
-
         }
         return inv;
+
     }
     //PDC - PersistentDataContainer
     public static String playerNamePDC = "player_name_pdc";
