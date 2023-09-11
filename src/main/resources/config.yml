@@ -4,7 +4,6 @@ config: 1.0
 language-file: "en_us" # The name of the language file to use
 #general
 prefix: "&6&lMCREPORTED &7| "
-none-permission: "&cSorry, but you don't have access to this command."
 none-player: "&cOnly a player can do that command."
 none-target: "&cYou need a player to do this command."
 none-need-args: "&7You don't need a bigger argument than that in your command."
@@ -17,19 +16,27 @@ MUST-BE-PLAYER-ERROR: "&cOnly a player can execute this command!"
 
 
 #discord
-WEBHOOK_URL: ""#url
-GUI-icon: ""#url
-ReportCMD: "/"
+#WEBHOOK_URL_PLAYER: "" #url
+#WEBHOOK_URL_BUGS: "" #url
+#GUI-icon: "" #url
+ReportCMD: "/" #prefix
+
+#GUI
+Report-PLayer: "&bReported Player..."
+Report-Close: "&cClose!"
+Report-Bugs: "&bReported Bugs..."
+Report-Menu: "&a&lReport Menu!"
+Online-Players-Menu: "&aOnline Players"
+Status-Online-Menu: "&7Status: &aOnline"
+
+ReportType: "&cReport Type"
 
 
+#bot discord
+TOKEN-INVADE: "ERROR: Provided bot token is invalid!"
 
-
-
-
-
-
-
-
-
-
-
+TOKEN: ""
+PLAYER-CHANNEL: #Id
+BUGS-CHANNEL: #Id
+WSH: "" #Text
+GILD-ID: #Id

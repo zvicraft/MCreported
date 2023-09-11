@@ -1,6 +1,5 @@
 package ml.zvicraft.dev.mcreported.utils;
 
-import ml.zvicraft.dev.mcreported.MCreported;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -12,6 +11,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static ml.zvicraft.dev.mcreported.MCreported.plugin;
 //colors
 
 
@@ -52,7 +53,7 @@ public class Utils {
         }
 
         p.sendMessage(chat("&connect server..."));
-        p.sendPluginMessage(MCreported.getInstance(), "BungeeCord", out.toByteArray());
+        p.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
     }
 
 }

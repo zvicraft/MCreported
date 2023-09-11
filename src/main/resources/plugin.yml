@@ -4,10 +4,22 @@ main: ml.zvicraft.dev.mcreported.MCreported
 api-version: 1.19
 description: reports systems
 commands:
- report:
-   description: open gui reports
-   usage: /<command>
+   report:
+     description: open gui reports
+     usage: /<command>
 
- reloadrmc:
-    description: reload configs
-    usage: /<command>
+   reloadrmc:
+      description: reload configs
+      usage: /<command>
+
+   reports:
+     description: show all reports
+     usage: /<command>
+
+   reportscancel:
+       description: cancel 1 reports
+       usage: /<command>
+
+   reportscancelall:
+     description:
+     usage: /<command>

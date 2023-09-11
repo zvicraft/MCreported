@@ -1,6 +1,5 @@
 package ml.zvicraft.dev.mcreported.commands;
 
-import ml.zvicraft.dev.mcreported.MCreported;
 import ml.zvicraft.dev.mcreported.utils.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,9 +7,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import static ml.zvicraft.dev.mcreported.MCreported.plugin;
+
 
 public class CommadsConfig implements CommandExecutor {
-    private MCreported plugin = MCreported.getInstance();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
@@ -22,6 +22,6 @@ public class CommadsConfig implements CommandExecutor {
         } else {
             player.sendMessage(Utils.chat(plugin.getConfig().getString("none-permission")));
         }
-        return false;
+        return true;
     }
 }
