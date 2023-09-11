@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ml.zvicraft.dev</groupId>
+    <artifactId>MCreported</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>ml.zvicraft.dev</groupId>
+            <artifactId>MCreported-1_20_R0</artifactId>
+            <version>1_20_R0</version>
+            <type>jar</type>
+            <scope>compile</scope> <!-- The 'compile' scope will get shaded in -->
+            <optional>true
+            </optional> <!-- Set all of these to optional, to ensure plugins building against yours don't look for them -->
+        </dependency>
+        <dependency>
+            <groupId>ml.zvicraft.dev</groupId>
+            <artifactId>MCreported-1_19_4_R0</artifactId>
+            <version>1_19_4_R0</version>
+            <type>jar</type>
+            <scope>compile</scope> <!-- The 'compile' scope will get shaded in -->
+            <optional>true
+            </optional> <!-- Set all of these to optional, to ensure plugins building against yours don't look for them -->
+        </dependency>
+        <dependency>
+            <groupId>ml.zvicraft.dev</groupId>
+            <artifactId>MCreported-1_19_R0</artifactId>
+            <version>1_19_R0</version>
+            <type>jar</type>
+            <scope>compile</scope> <!-- The 'compile' scope will get shaded in -->
+            <optional>true
+            </optional> <!-- Set all of these to optional, to ensure plugins building against yours don't look for them -->
+        </dependency>
+        <dependency>
+            <groupId>ml.zvicraft.dev</groupId>
+            <artifactId>MCreported-1_18_2_R0</artifactId>
+            <version>1_18_2_R0</version>
+            <type>jar</type>
+            <scope>compile</scope> <!-- The 'compile' scope will get shaded in -->
+            <optional>true
+            </optional> <!-- Set all of these to optional, to ensure plugins building against yours don't look for them -->
+        </dependency>
+        <dependency>
+            <groupId>ml.zvicraft.dev</groupId>
+            <artifactId>MCreported-api</artifactId>
+            <version>API</version>
+            <type>jar</type>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>provided</scope> <!-- The 'provided' scope will NOT get shaded in -->
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+    <build>
+        <directory>../target</directory> <!-- Build it one level up, because it is the one we care about -->
+        <finalName>MCreported</finalName>
+        <!-- Define filtering for the inclusion of plugin.yml, so we can utilize the pom.xml version in it -->
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>
