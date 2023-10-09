@@ -18,7 +18,7 @@ public class Mcdiscord {
         JDABuilder builder = JDABuilder.createDefault(token);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setActivity(Activity.watching(plugin.getConfig().getString("WSH")));
-        builder.addEventListeners(new Object[] { new ChatEvent() });
+        builder.addEventListeners(new ChatEvent());
         jda = builder.build();
     }
 }

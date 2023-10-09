@@ -8,11 +8,11 @@ import ml.zvicraft.dev.mcreported.api.NMS;
 import ml.zvicraft.dev.mcreported.commands.*;
 import ml.zvicraft.dev.mcreported.events.LisenersMenu;
 import ml.zvicraft.dev.mcreported.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public final class MCreported_Plugin extends JavaPlugin {
     public static MCreported_Plugin plugin;
-    private NMS nmsHandler;
+//    private NMS nmsHandler;
 
     public static List<ReportP> reports = new ArrayList<>();
 
@@ -30,26 +30,36 @@ public final class MCreported_Plugin extends JavaPlugin {
     }
 
     public void onEnable() {
-        String packageName = this.getServer().getClass().getPackage().getName();
-        // Get full package string of CraftServer.
-        // org.bukkit.craftbukkit.version
-        String version = packageName.substring(packageName.lastIndexOf('.') + 1);
-        // Get the last element of the package
-
         try {
-            final Class<?> clazz = Class.forName("ml.zvicraft.dev.mcrepored.nms." + version + ".NMSHandler");
-            // Check if we have a NMSHandler class at that location.
-            if (NMS.class.isAssignableFrom(clazz)) { // Make sure it actually implements NMS
-                this.nmsHandler = (NMS) clazz.getConstructor().newInstance(); // Set our handler
-            }
-        } catch (final Exception e) {
+            //Set your nms field
+            NMS nms = (NMS) Class.forName("ml.zvicraft.dev.mcreported.nms.NMSHandler_" + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].substring(1)).newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
-            this.getLogger().severe("Could not find support for this CraftBukkit version.");
-            this.getLogger().info("Check for updates at URL HERE");
-            this.setEnabled(false);
-            return;
         }
-        this.getLogger().info("Loading support for " + version);
+
+
+
+//
+//        String packageName = this.getServer().getClass().getPackage().getName();
+//        // Get full package string of CraftServer.
+//        // org.bukkit.craftbukkit.version
+//        String version = packageName.substring(packageName.lastIndexOf('.') + 1);
+//        // Get the last element of the package
+//
+//        try {
+//            final Class<?> clazz = Class.forName("ml.zvicraft.dev.mcrepored.nms." + version + ".NMSHandler_1_18_wR0");
+//            // Check if we have a NMSHandler_1_18_wR0 class at that location.
+//            if (NMS.class.isAssignableFrom(clazz)) { // Make sure it actually implements NMS
+//                this.nmsHandler = (NMS) clazz.getConstructor().newInstance(); // Set our handler
+//            }
+//        } catch (final Exception e) {
+//            e.printStackTrace();
+//            this.getLogger().severe("Could not find support for this CraftBukkit version.");
+//            this.getLogger().info("Check for updates at URL HERE");
+//            this.setEnabled(false);
+//            return;
+//        }
+//        this.getLogger().info("Loading support for " + version);
 
 
 
