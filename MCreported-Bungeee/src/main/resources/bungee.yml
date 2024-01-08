@@ -1,0 +1,5 @@
+name: MCreportedBungeee
+version: '${project.version}'
+main: com.zvicraft.dev.mcreportedbungeee.MCreportedBungeee
+author: zvicraft
+description: bugeecordintraction
