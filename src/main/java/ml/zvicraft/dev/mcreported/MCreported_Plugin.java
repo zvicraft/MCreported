@@ -4,15 +4,14 @@ import ml.zvicraft.dev.mcreported.FileManager.FileManager;
 import ml.zvicraft.dev.mcreported.GUI.ChatEvent;
 import ml.zvicraft.dev.mcreported.GUI.Default;
 import ml.zvicraft.dev.mcreported.GUI.JoinAndLeaveEvent;
-import ml.zvicraft.dev.mcreported.api.NMS;
 import ml.zvicraft.dev.mcreported.commands.*;
 import ml.zvicraft.dev.mcreported.events.LisenersMenu;
 import ml.zvicraft.dev.mcreported.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +22,8 @@ public final class MCreported_Plugin extends JavaPlugin {
 //    private NMS nmsHandler;
 
     public static List<ReportP> reports = new ArrayList<>();
+//    public static HashMap<Player,Integer> amount ;
+
 
     public void loadConfig() {
         getConfig().options().copyDefaults(false);
@@ -30,12 +31,13 @@ public final class MCreported_Plugin extends JavaPlugin {
     }
 
     public void onEnable() {
-        try {
-            //Set your nms field
-            NMS nms = (NMS) Class.forName("ml.zvicraft.dev.mcreported.nms.NMSHandler_" + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].substring(1)).newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            //Set your nms field
+//            NMS nms = (NMS) Class.forName("ml.zvicraft.dev.mcreported.nms.NMSHandler_" + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].substring(1)).newInstance();
+//        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+
 
 
 
@@ -93,17 +95,34 @@ public final class MCreported_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents((Listener)new LisenersMenu(), (Plugin)this);
         getServer().getPluginManager().registerEvents((Listener)new ChatEvent(), (Plugin)this);
         getServer().getPluginManager().registerEvents((Listener)new JoinAndLeaveEvent(), (Plugin)this);
+
+
+        if( getDataFolder().mkdir() ){
+
+            getDataFolder().mkdirs();
+
+
+        }
+
+
+
+         ReportP.getAmount().restore();
+
     }
 
     public void onDisable() {
+        ReportP.getAmount().save();
         for (ReportP report : reports) {
             FileManager.ymlData.set("reports." + report.getId() + ".msg", report.getMsg());
             FileManager.ymlData.set("reports." + report.getId() + ".client", report.getClient());
             FileManager.ymlData.set("reports." + report.getId() + ".reported", report.getReported());
             FileManager.ymlData.set("reports." + report.getId() + ".time", report.getTime());
+            FileManager.ymlData.set("reports." + report.getId() + ".amount", ReportP.getAmount());
+
         }
         FileManager.saveFiles();
     }
+
 
     public static void loadData() {
         try {
@@ -121,6 +140,8 @@ public final class MCreported_Plugin extends JavaPlugin {
             FileManager.ymlData.set("reports", null);
             FileManager.saveFiles();
             FileManager.reloadFiles();
+            ReportP.getAmount().save();
+            ReportP.getAmount().restore();
         } catch (Exception exception) {}
     }
 

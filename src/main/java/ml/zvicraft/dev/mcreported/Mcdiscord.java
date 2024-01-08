@@ -20,5 +20,6 @@ public class Mcdiscord {
         builder.setActivity(Activity.watching(plugin.getConfig().getString("WSH")));
         builder.addEventListeners(new ChatEvent());
         jda = builder.build();
+
     }
 }

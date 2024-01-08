@@ -1,13 +1,16 @@
 package ml.zvicraft.dev.mcreported;
 
 
+import ml.zvicraft.dev.mcreported.utils.DataContainer.HashMap;
+
 import java.util.Date;
+
 
 
 public class ReportP {
 
 
-
+    public static HashMap<String,Integer> amount = new HashMap<>(MCreported_Plugin.plugin,"report-amount");
     private int id;
     private String[] msg;
     private String reported,client;
@@ -19,8 +22,15 @@ public class ReportP {
         this.msg = msg;
         this.time = time;
         this.reported = reported;
+
         this.client = client;
 
+        if(amount.get(reported)!=null){
+            amount.put(reported,((Integer) amount.get(reported)+1));
+        }
+        else{
+            amount.put(reported,1);
+        }
     }
 
 
@@ -37,7 +47,7 @@ public class ReportP {
                 ", Client: "+ client+
                 ", Reported: " + reported+
                 ", Time: "+time.toString() +
-                ", Msg: {"+ msgL +"}\n";
+                ", Msg: {"+ msgL +"}\n" + "Amount:" + amount.get(client);
     }
 
     public int getId() {return id;}
@@ -49,4 +59,7 @@ public class ReportP {
     public String getClient() {return client;}
 
     public Date getTime() {return time;}
+    public int getAmount(String reported) {return (Integer) amount.get(reported);}
+
+    public static HashMap<String,Integer> getAmount(){return amount;}
 }

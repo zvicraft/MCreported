@@ -17,8 +17,8 @@ public class reportshow implements CommandExecutor {
             Player p = (Player) sender;
             p.sendMessage(reports+"");
             for (ReportP report : reports) {
-
                 p.sendMessage(report + "");
+                report.getAmount().restore();
                 p.sendMessage("\n------------------------------------------\n");
             }
         }
