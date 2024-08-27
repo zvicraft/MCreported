@@ -1,13 +1,19 @@
 package ml.zvicraft.dev.mcreported;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import ml.zvicraft.dev.mcreported.FileManager.FileManager;
 import ml.zvicraft.dev.mcreported.GUI.ChatEvent;
 import ml.zvicraft.dev.mcreported.GUI.Default;
 import ml.zvicraft.dev.mcreported.GUI.JoinAndLeaveEvent;
+import ml.zvicraft.dev.mcreported.api.NMS;
 import ml.zvicraft.dev.mcreported.commands.*;
 import ml.zvicraft.dev.mcreported.events.LisenersMenu;
+import ml.zvicraft.dev.mcreported.utils.BungeeMessageListener;
 import ml.zvicraft.dev.mcreported.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,9 +25,12 @@ import java.util.List;
 
 public final class MCreported_Plugin extends JavaPlugin {
     public static MCreported_Plugin plugin;
-//    private NMS nmsHandler;
 
     public static List<ReportP> reports = new ArrayList<>();
+    private NMS nmsHandler;
+
+    public MCreported_Plugin(NMS nmsHandler) {
+    }
 //    public static HashMap<Player,Integer> amount ;
 
 
@@ -31,42 +40,42 @@ public final class MCreported_Plugin extends JavaPlugin {
     }
 
     public void onEnable() {
-//        try {
-//            //Set your nms field
-//            NMS nms = (NMS) Class.forName("ml.zvicraft.dev.mcreported.nms.NMSHandler_" + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].substring(1)).newInstance();
-//        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            //Set your nms field
+            NMS nms = (NMS) Class.forName("ml.zvicraft.dev.mcreported.nms.NMSHandler_" + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].substring(1)).newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
 
 
-//
-//        String packageName = this.getServer().getClass().getPackage().getName();
-//        // Get full package string of CraftServer.
-//        // org.bukkit.craftbukkit.version
-//        String version = packageName.substring(packageName.lastIndexOf('.') + 1);
-//        // Get the last element of the package
-//
-//        try {
-//            final Class<?> clazz = Class.forName("ml.zvicraft.dev.mcrepored.nms." + version + ".NMSHandler_1_18_wR0");
-//            // Check if we have a NMSHandler_1_18_wR0 class at that location.
-//            if (NMS.class.isAssignableFrom(clazz)) { // Make sure it actually implements NMS
-//                this.nmsHandler = (NMS) clazz.getConstructor().newInstance(); // Set our handler
-//            }
-//        } catch (final Exception e) {
-//            e.printStackTrace();
-//            this.getLogger().severe("Could not find support for this CraftBukkit version.");
-//            this.getLogger().info("Check for updates at URL HERE");
-//            this.setEnabled(false);
-//            return;
-//        }
-//        this.getLogger().info("Loading support for " + version);
+        String packageName = this.getServer().getClass().getPackage().getName();
+        // Get full package string of CraftServer.
+        // org.bukkit.craftbukkit.version
+        String version = packageName.substring(packageName.lastIndexOf('.') + 1);
+        // Get the last element of the package
+
+        try {
+            final Class<?> clazz = Class.forName("ml.zvicraft.dev.mcrepored.nms." + version + ".NMSHandler_1_18_R0");
+            // Check if we have a NMSHandler_1_18_wR0 class at that location.
+            if (NMS.class.isAssignableFrom(clazz)) { // Make sure it actually implements NMS
+                this.nmsHandler = (NMS) clazz.getConstructor().newInstance(); // Set our handler
+            }
+        } catch (final Exception e) {
+            e.printStackTrace();
+            this.getLogger().severe("Could not find support for this CraftBukkit version.");
+            this.getLogger().info("Check for updates at URL HERE");
+            this.setEnabled(false);
+            return;
+        }
+        this.getLogger().info("Loading support for " + version);
 
 
 
 
         SpigotUpdater updater = new SpigotUpdater(this, 111004);
+
         try {
             if (updater.checkForUpdates())
                 getLogger().info("An update was found! New version: " + updater.getLatestVersion() + " download: " + updater.getResourceURL());
@@ -75,13 +84,20 @@ public final class MCreported_Plugin extends JavaPlugin {
             e.printStackTrace();
         }
         plugin = this;
-        try {
+        if (!plugin.getConfig().getBoolean("Bungee")) {
+
+            try {
             new Mcdiscord();
         } catch (LoginException e) {
             System.out.println(getConfig().getString("TOKEN-INVADE"));
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
+        }}else{
+            getLogger().info("BungeeCord detected, disabling discord support");
+            return;
         }
         loadConfig();
+        loadData();
+
         Default.initialise();
         getLogger().info("MCREPORTED | The plugin is enabled");
         getServer().getConsoleSender().sendMessage(Utils.chat(getConfig().getString("prefix") + "&athe plugin is enabled"));
@@ -107,7 +123,9 @@ public final class MCreported_Plugin extends JavaPlugin {
 
 
          ReportP.getAmount().restore();
-
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "Mcreported:channel");
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "Mcreported:channel", new BungeeMessageListener(this));
+        // Register the incoming channel, from Bungee
     }
 
     public void onDisable() {
@@ -178,5 +196,21 @@ public final class MCreported_Plugin extends JavaPlugin {
         builder.setLength(builder.length() - 1);
         return builder.toString();
     }
+    public static void forwardData(Player player, String message, boolean something) {
 
+        try {
+
+            ByteArrayDataOutput out = ByteStreams.newDataOutput();
+            out.writeUTF(message);
+            out.writeBoolean(something);
+
+            player.sendPluginMessage(plugin, "channel", out.toByteArray());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void doSomethingWithTheData(String message, boolean something) {
+    }
 }

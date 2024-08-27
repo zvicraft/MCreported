@@ -3,15 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ml.zvicraft.dev</groupId>
     <artifactId>MCreported-v1_19_R1</artifactId>
-    <packaging>jar</packaging>
     <name>Mcreported Plugin implementation v1_19_R1</name>
     <version>1.19-R0.1-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-    <parent>
-        <groupId>ml.zvicraft.dev</groupId>
-        <artifactId>MCreported-parent</artifactId>
-        <version>parent</version>
-    </parent>
+
     <repositories>
         <repository>
             <id>spigot-repo</id>
@@ -22,28 +22,16 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
-            <version>1.19-R0.1-SNAPSHOT</version>
+            <version>1.19.4-R0.1-SNAPSHOT</version>
             <classifier>remapped-mojang</classifier>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>ml.zvicraft.dev</groupId>
-            <artifactId>MCreported-api</artifactId> <!-- Depend on the API! -->
+            <artifactId>MCreported-api</artifactId>
             <version>API</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.20.2-R0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.19.4-R0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 </project>

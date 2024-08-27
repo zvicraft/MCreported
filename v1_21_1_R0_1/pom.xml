@@ -7,11 +7,23 @@
         <version>1.3</version>
     </parent>
     <groupId>ml.zvicraft.dev</groupId>
-    <artifactId>MCreported-v1_18_R2</artifactId>
+    <artifactId>MCreported-v1_20_R1</artifactId>
     <packaging>jar</packaging>
-    <name>Mcreported Plugin implementation v1_18_R2</name>
-    <version>1.18.2-R0.1-SNAPSHOT</version>
-
+    <name>Mcreported Plugin implementation v1_20_R1</name>
+    <version>1.20.1-R0.1-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
@@ -20,36 +32,37 @@
 
     <repositories>
         <repository>
-            <id>papermc-repo</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
-        </repository>
-        <repository>
-            <id>bungeecord-repo</id>
-            <url>https://repo.md-5.net/</url>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
-
     <dependencies>
         <dependency>
-            <groupId>io.papermc.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
+            <type>jar</type>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>ml.zvicraft.dev</groupId>
-            <artifactId>MCreported-api</artifactId>
+            <artifactId>MCreported-api</artifactId> <!-- Depend on the API! -->
             <version>API</version>
             <type>jar</type>
         </dependency>
-
         <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-chat</artifactId>
-            <version>1.16-R0.4</version> <!-- גרסה אחרת אם הקודמת לא זמינה -->
+            <groupId>ml.zvicraft.dev</groupId>
+            <artifactId>MCreported-api</artifactId>
+            <version>API</version>
+            <scope>compile</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>minecraft-server</artifactId>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
@@ -62,23 +75,29 @@
             <version>1.6.3-SNAPSHOT</version>
         </dependency>
 
+
         <dependency>
             <groupId>club.minnced</groupId>
             <artifactId>discord-webhooks</artifactId>
             <version>0.8.2</version>
             <scope>import</scope>
         </dependency>
-
         <dependency>
             <groupId>com.github.shynixn</groupId>
             <artifactId>discordwebhook-ktl</artifactId>
             <version>1.2</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.cryptomorin</groupId>
             <artifactId>XSeries</artifactId>
             <version>9.5.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>1.20.1-R0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 </project>

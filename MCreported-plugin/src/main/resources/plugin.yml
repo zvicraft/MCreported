@@ -1,8 +1,8 @@
 name: MCreported
 main: ml.zvicraft.dev.mcreported.MCreported_Plugin
 description: reports systems
-version: '2.0.2'
-api-version: 1.19
+version: ${project.version}
+api-version: 1.18.2
 commands:
    report:
      description: open gui reports

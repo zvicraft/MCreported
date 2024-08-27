@@ -1,15 +1,16 @@
-package ml.zvicraft.dev.mcreported.nms.v1_19_4_R0;
+package ml.zvicraft.dev.mcreported.nms;
 
 import ml.zvicraft.dev.mcreported.api.NMS;
 import net.minecraft.network.chat.Component;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_19_R1.util.CraftChatMessage;
+import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R3.util.CraftChatMessage;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
 
-public class NMSHandler implements NMS {
+public class NMSHandler_1_19_R1 implements NMS {
 
     private static final UUID UUID = null;
 
@@ -18,6 +19,11 @@ public class NMSHandler implements NMS {
         for(Component component : CraftChatMessage.fromString(message)) {
             ((CraftPlayer)player).getHandle().sendChatMessage(null, true,null);
         }
+    }
+
+    @Override
+    public void breakBlock(Player player, Location loc) {
+
     }
 }
 

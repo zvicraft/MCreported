@@ -9,14 +9,11 @@ import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 import net.md_5.bungee.event.EventHandler;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
-
-import static org.bukkit.Bukkit.getLogger;
 
 public class MCreportedBungeee extends Plugin implements Listener {
     public static MCreportedBungeee plugin;
@@ -56,7 +53,7 @@ public class MCreportedBungeee extends Plugin implements Listener {
         }
 
 
-        ProxyServer.getInstance().registerChannel(config.getString("Channel-server"));
+        ProxyServer.getInstance().registerChannel("Mcreported:channel");
 
         // Register your event listener
         getProxy().getPluginManager().registerListener(this, this);
@@ -70,13 +67,13 @@ public class MCreportedBungeee extends Plugin implements Listener {
     @Override
     public void onDisable() {
 
-        getProxy().unregisterChannel(config.getString("Channel-server"));
+        getProxy().unregisterChannel("Mcreported:channel");
     }
 
     @EventHandler
     public void onReceive(PluginMessageEvent e) {
 
-        if (!e.getTag().equals(config.getString("Channel-server"))) {
+        if (!e.getTag().equals("Mcreported:channel")) {
             return;
         }
 
@@ -86,7 +83,7 @@ public class MCreportedBungeee extends Plugin implements Listener {
 
             if (!server.getAddress().equals(senderServer) && server.getPlayers().size() > 0) {
 
-                server.sendData(config.getString("Channel-server"), e.getData());
+                server.sendData("Mcreported:channel", e.getData());
             }
         }
     }

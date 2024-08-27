@@ -13,7 +13,7 @@ import static com.zvicraft.dev.mcreportedbungeee.MCreportedBungeee.config;
 public class MessageListener implements PluginMessageListener, Listener {
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        if (channel.equals(config.getString("Channel-server"))) {
+        if (channel.equals("Mcreported:channel")) {
             String reported = new String(message);
             String reasonPDC = new String(message);
             String senderName = new String(message);

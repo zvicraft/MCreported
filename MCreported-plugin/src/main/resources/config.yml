@@ -31,6 +31,8 @@ Status-Online-Menu: "&7Status: &aOnline"
 
 ReportType: "&cReport Type"
 
+Bungee: #true or false
+SERVAR_NAME: "" #server name
 
 #bot discord
 TOKEN-INVADE: "ERROR: Provided bot token is invalid!"

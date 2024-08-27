@@ -7,11 +7,12 @@
     <name>Mcreported Plugin implementation v1_19_4_R0</name>
     <version>1.19.4-R0.1-SNAPSHOT</version>
 
-    <parent>
-        <groupId>ml.zvicraft.dev</groupId>
-        <artifactId>MCreported-parent</artifactId>
-        <version>parent</version>
-    </parent>
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <repositories>
         <repository>
             <id>spigot-repo</id>

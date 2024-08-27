@@ -8,13 +8,11 @@ import net.md_5.bungee.event.EventHandler;
 
 import java.net.InetSocketAddress;
 
-import static com.zvicraft.dev.mcreportedbungeee.MCreportedBungeee.config;
-
 public class onReceive implements Listener {
     @EventHandler
     public void onReceive(PluginMessageEvent e) {
 
-        if (!e.getTag().equals(config.getString("Channel-server"))) {
+        if (!e.getTag().equals("Mcreported:channel")) {
             return;
         }
 
@@ -24,7 +22,7 @@ public class onReceive implements Listener {
 
             if (!server.getAddress().equals(senderServer) && server.getPlayers().size() > 0) {
 
-                server.sendData(config.getString("Channel-server"), e.getData());
+                server.sendData("Mcreported:channel", e.getData());
             }
         }
     }

@@ -93,7 +93,7 @@ public class Default {
     //PDC - PersistentDataContainer
     public static String reasonPDC = "reason_pdc";
 
-        public static void rtClicked(Player player, int slot, ItemStack clicked, Inventory inv) {
+    public static void rtClicked(Player player, int slot, ItemStack clicked, Inventory inv) {
         if(clicked!=null) {
             if (clicked.getItemMeta() != null) {
                 if(clicked.getItemMeta().getDisplayName()!=null){
@@ -110,7 +110,7 @@ public class Default {
                     }
                     if(clicked.getItemMeta().getDisplayName().equals(chat("&cReport Bug"))){}
 
-                    }
+                }
 
             }
         }
