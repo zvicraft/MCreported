@@ -21,7 +21,7 @@ MCReported is a comprehensive Minecraft plugin designed to streamline the proces
 | Command                | Description                              | Permission         |
 |------------------------|------------------------------------------|--------------------|
 | `/report`              | Report a player or a bug.                | `MCreport.report`  |
-| `/reports`             | Show all reports.                        | `MCreport.view`    |
+| `/reports`             | Show all reports.                        | `MCreport.staff`   |
 | `/reloadrmcl`          | Reload the plugin configurations.        | `MCreport.admin`   |
 | `/reportscancel <id>`  | Cancel a specific report.                | `MCreport.staff`   |
 | `/reportscancelall`    | Cancel all reports.                      | `MCreport.staff`   |
@@ -33,7 +33,7 @@ MCReported is a comprehensive Minecraft plugin designed to streamline the proces
 | `MCreport.admin`      | Allows use of the `/reloadrmcl` command.     |
 | `MCreport.staff`      | Allows use of all staff commands.            |
 | `MCreport.report`     | Allows players to create reports.            |
-| `MCreport.view`       | Allows staff to view all reports.            |
+<!--| `MCreport.view`       | Allows staff to view all reports.            |-->
 
 ## Installation
 
