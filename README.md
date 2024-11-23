@@ -96,3 +96,33 @@ PLAYER-CHANNEL: "" # Player report channel ID
 BUGS-CHANNEL: "" # Bug report channel ID
 WSH: "" # WebSocket URL
 GILD-ID: "" # Guild ID
+```
+
+## Preview
+
+### Report Bugs
+![Report Bugs](https://github.com/zvicraft/MCreported/raw/master/assets/report_bugs.png)
+
+### Report Players
+![Report Players](https://github.com/zvicraft/MCreported/raw/master/assets/report_players.png)
+
+### Main Menu
+![Menu](https://github.com/zvicraft/MCreported/raw/master/assets/menu.png)
+
+## Contributing
+
+Contributions are welcome! If you’d like to contribute, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`feature-branch`).
+3. Commit your changes.
+4. Push to your branch.
+5. Open a Pull Request.
+
+## Suggestions & Feedback
+
+Have ideas for new features or improvements? Please submit your suggestions on the [Issues](https://github.com/zvicraft/MCreported/issues) page.
+
+## License
+
+This plugin is licensed under the MIT License. See the [LICENSE](https://github.com/zvicraft/MCreported/blob/master/LICENSE) file for details.
