@@ -123,6 +123,6 @@ Contributions are welcome! If you’d like to contribute, follow these steps:
 
 Have ideas for new features or improvements? Please submit your suggestions on the [Issues](https://github.com/zvicraft/MCreported/issues) page.
 
-## License
+<!-- ## License
 
-This plugin is licensed under the MIT License. See the [LICENSE](https://github.com/zvicraft/MCreported/blob/master/LICENSE) file for details.
+This plugin is licensed under the MIT License. See the [LICENSE](https://github.com/zvicraft/MCreported/blob/master/LICENSE) file for details. -->
